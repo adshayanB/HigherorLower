@@ -11,12 +11,13 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
     //Variable Scoping
     int randomNumber;
+
     public void makeToast (String string ){
 
         Toast.makeText(MainActivity.this,string, Toast.LENGTH_SHORT).show();
 
     }
-
+    //Guess method
    public void guess(View view){
        EditText guessVal = findViewById(R.id.guess);
 
@@ -25,17 +26,18 @@ public class MainActivity extends AppCompatActivity {
 
         if (guessInt > randomNumber){
 
-            makeToast ("Lower!");
+            makeToast ("Lower!");//Sends a string to make toast method
         }
 
         else if (guessInt < randomNumber){
 
-          makeToast ("Higher!");
+          makeToast ("Higher!");//Sends a string to make toast method
         }
+       
         else{
             makeToast("That's Right! Try again!");
-            Random rand = new Random();
-            randomNumber = rand.nextInt( 20)+1;
+            Random rand = new Random();//Creates a new random number for the next round
+            randomNumber = rand.nextInt( 20)+1;//Creates a number between 1 and 20
         }
 
 
@@ -45,9 +47,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//Generates Random number when app is launched
+        //Generates Random number when app is launched
         Random rand = new Random();
 
-        randomNumber = rand.nextInt(20) + 1;
+        randomNumber = rand.nextInt(20) + 1;//Sets a number between 1 and 20
     }
 }
