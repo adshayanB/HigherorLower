@@ -18,29 +18,31 @@ public class MainActivity extends AppCompatActivity {
 
     }
     //Guess method
-   public void guess(View view){
+   public void guess(View view) {
        EditText guessVal = findViewById(R.id.guess);
 
-       int guessInt = Integer.parseInt(guessVal.getText().toString());
+       if (guessVal.getText().toString().isEmpty()) {
+           makeToast("Please enter a number!");
 
 
-        if (guessInt > randomNumber){
-
-            makeToast ("Lower!");//Sends a string to make toast method
-        }
-
-        else if (guessInt < randomNumber){
-
-          makeToast ("Higher!");//Sends a string to make toast method
-        }
-
-        else{
-            makeToast("That's Right! Try again!");
-            Random rand = new Random();//Creates a new random number for the next round
-            randomNumber = rand.nextInt( 20)+1;//Creates a number between 1 and 20
-        }
+       } else {
+           int guessInt = Integer.parseInt(guessVal.getText().toString());
 
 
+           if (guessInt > randomNumber) {
+
+               makeToast("Lower!");//Sends a string to make toast method
+           } else if (guessInt < randomNumber) {
+
+               makeToast("Higher!");//Sends a string to make toast method
+           } else {
+               makeToast("That's Right! Try again!");
+               Random rand = new Random();//Creates a new random number for the next round
+               randomNumber = rand.nextInt(20) + 1;//Creates a number between 1 and 20
+           }
+
+
+       }
    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
